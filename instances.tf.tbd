@@ -1,0 +1,24 @@
+resource "google_compute_instance" "default" {
+  name                      = "instance-2"
+  machine_type              = "n1-standard-1"
+  project                   = google_project.project.project_id
+  zone                      = "us-east4-c"
+  allow_stopping_for_update = true
+
+  boot_disk {
+    initialize_params {
+      image = "centos-7"
+    }
+  }
+
+  network_interface {
+    subnetwork = google_compute_subnetwork.subnet-us-east4.id
+
+    access_config {
+      // Ephemeral IP
+    }
+  }
+  service_account {
+    scopes = ["cloud-platform"]
+  }
+}

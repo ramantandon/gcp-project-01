@@ -1,0 +1,51 @@
+resource "google_project_service" "compute" {
+  project = var.project
+  service = "compute.googleapis.com"
+}
+
+resource "google_project_service" "billing" {
+  project = var.project
+  service = "cloudbilling.googleapis.com"
+}
+
+resource "google_project_service" "iam" {
+  project = var.project
+  service = "iam.googleapis.com"
+}
+
+resource "google_project_service" "storage" {
+  project = var.project
+  service = "storage-component.googleapis.com"
+}
+
+resource "google_project_service" "storage-json" {
+  project = var.project
+  service = "storage-api.googleapis.com"
+}
+
+resource "google_project_service" "cloudresourcemanager" {
+  project = var.project
+  service = "cloudresourcemanager.googleapis.com"
+}
+
+resource "google_project_service" "serviceusage" {
+  project = var.project
+  service = "serviceusage.googleapis.com"
+}
+
+resource "google_project_service" "cloudkms" {
+  project = var.project
+  service = "cloudkms.googleapis.com"
+}
+
+resource "google_project_service" "containerregistry" {
+  project = var.project
+  service = "containerregistry.googleapis.com"
+}
+
+resource "google_project_service" "artifactregistry" {
+  project = var.project
+  service = "artifactregistry.googleapis.com"
+}
+
+

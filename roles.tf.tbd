@@ -1,0 +1,24 @@
+resource "google_storage_bucket_iam_member" "gcr-access" {
+  for_each = toset([
+    "artifacts.${google_project.project.project_id}.appspot.com",
+    "us.artifacts.${google_project.project.project_id}.appspot.com",
+    "eu.artifacts.${google_project.project.project_id}.appspot.com"
+  ])
+  bucket = each.key
+  role   = "roles/storage.admin"
+  member = "serviceAccount:terraform@rtandon-ak-myproject-2021-05.iam.gserviceaccount.com"
+}
+
+
+/* var.buckets = {
+  "bucket_name" = {
+    "role" = ""
+    "member" = ""
+  }
+}
+
+for_each = var.buckets
+bucket = each.key
+role = each.value.role
+member = each.value.member */
+  

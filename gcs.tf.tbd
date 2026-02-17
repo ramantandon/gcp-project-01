@@ -1,0 +1,33 @@
+resource "google_storage_bucket" "my-auto-expire-bucket-101" {
+  name          = "my-auto-expiring-bucket-101"
+  project       = google_project.project.project_id
+  location      = "US"
+  force_destroy = true
+  lifecycle_rule {
+    condition {
+      age = 3
+    }
+    action {
+      type = "Delete"
+    }
+  }
+}
+
+module "cloud-storage" {
+  source  = "terraform-google-modules/cloud-storage/google"
+  version = "1.7.2"
+
+  # insert the 3 required variables here (location is also required, else it will default to EU)
+  names      = ["bucket-one", "bucket-two", "bucket-three"]
+  prefix     = "my-gcs"
+  location   = "US"
+  project_id = google_project.project.project_id
+
+  set_admin_roles = true
+  admins          = ["user:rtandon.ny@gmail.com", ]
+
+  bucket_policy_only = {
+    "bucket-one" = false,
+    "bucket-two" = false,
+  }
+}
