@@ -69,7 +69,7 @@ the following file for use by subsequent commands:
   - Click on Variables tab, and add an Environment Variable
   - Key would be `GOOGLE_CREDENTIALS` and value would be `application_default_credentials.json` 
   - Note: `GOOGLE_CREDENTIALS` value can be either `application_default_credentials.json` created by running 
-    `gcloud    auth application-default login` or it can be private key of a Service Account, but if you are not having a GCP  Organisation and only creating non-org projects then you cannot create a project using terraform's `google_project` resource using a service account key. In that case, it needs to be user account.
+    `gcloud auth application-default login` or it can be private key of a Service Account, but if you are not having a GCP  Organisation and only creating non-org projects then you cannot create a project using terraform's `google_project` resource using a service account key. In that case, it needs to be user account.
   - Note: You simply **CANNOT** copy/paste keys to Terraform's environment variable as there are newline characters added. To remove newline characters, we can use vscode. Copy key in vscode, select the key, ctrl + shift + p, Join Lines => enter. Copy the resultant key and paste it in TFC.
 
 9: Execute plan/apply <br>
