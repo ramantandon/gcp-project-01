@@ -1,4 +1,4 @@
-resource "google_compute_instance" "default" {
+resource "google_compute_instance" "instance-1" {
   name                      = "instance-1"
   machine_type              = "e2-medium"
   project                   = local.project
