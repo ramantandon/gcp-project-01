@@ -49,7 +49,7 @@ resource "google_compute_firewall" "allow_ssh" {
   direction = "INGRESS"
   priority = 1000
 
-# Apply this rule to instances with following tag
+  # Apply this rule to instances with following tag
   target_tags = ["allow-ssh"]
 
   # Source range for the traffic (0.0.0.0/0 means all)
