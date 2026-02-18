@@ -21,20 +21,23 @@ module "vpc_network" {
   ]
 
   # Optional Inputs
-  # auto_create_subnetworks = false
-  routing_mode = "GLOBAL" # default is GLOBAL
-  /* routes = [
-        {
-            name                   = "egress-internet"
-            description            = "route through IGW to access internet"
-            destination_range      = "0.0.0.0/0"
-            tags                   = "egress-inet"
-            next_hop_internet      = "true"
-        },
-    ] */
+  # auto_create_subnetworks = false    # default is false
+  # routing_mode = "GLOBAL"            # default is GLOBAL
+  /* 
+  routes = [
+    {
+      name                   = "egress-internet"
+      description            = "route through IGW to access internet"
+      destination_range      = "0.0.0.0/0"
+      tags                   = "egress-inet"
+      next_hop_internet      = "true"
+    },
+  ] 
+  */
 }
 
-/* resource "google_compute_network" "vpc-1" {
+/* Old method to create n/w, subnets. Use module as shown above.
+resource "google_compute_network" "vpc-1" {
   name                    = "vpc-1"
   auto_create_subnetworks = false
   project                 = google_project.project.project_id
@@ -53,4 +56,5 @@ resource "google_compute_subnetwork" "subnet-us-east4" {
     create = "15m"
     delete = "15m"
   }
-} */
+} 
+*/
