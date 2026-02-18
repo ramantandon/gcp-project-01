@@ -36,23 +36,23 @@ module "vpc_network" {
   */
 }
 
-# resource "google_compute_firewall" "allow_ssh" {
-#   name    = "allow-ssh"
-#   network = module.vpc_network.network_name
+resource "google_compute_firewall" "allow_ssh" {
+  name    = "allow-ssh"
+  network = module.vpc_network.network_name.self_link
 
-#   # Allow rule
-#   allow {
-#     protocol = "tcp"
-#     ports    = ["22"]
-#   }
+  # Allow rule
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
 
-#   # Traffic direction (default is INGRESS)
-#   direction = "INGRESS"
-#   priority = 1000
+  # Traffic direction (default is INGRESS)
+  direction = "INGRESS"
+  priority = 1000
 
-#   # Source range for the traffic (0.0.0.0/0 means all)
-#   source_ranges = ["0.0.0.0/0"]
-# }
+  # Source range for the traffic (0.0.0.0/0 means all)
+  source_ranges = ["0.0.0.0/0"]
+}
 
 /* Old method to create n/w, subnets. Use module as shown above.
 resource "google_compute_network" "vpc-1" {
