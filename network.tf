@@ -47,7 +47,7 @@ resource "google_compute_firewall" "allow_ssh" {
   }
 
   # Traffic direction (default is INGRESS)
-  direction = INGRESS
+  direction = "INGRESS"
   priority = 1000
 
   # Source range for the traffic (0.0.0.0/0 means all)

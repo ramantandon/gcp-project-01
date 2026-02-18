@@ -5,5 +5,10 @@ terraform {
       source  = "hashicorp/google"
       version = "~> 7.0"
     }
+    # The 'random' provider declaration
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.8.1" 
+    }
   }
 }
