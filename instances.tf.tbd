@@ -1,18 +1,19 @@
 resource "google_compute_instance" "default" {
-  name                      = "instance-2"
-  machine_type              = "n1-standard-1"
-  project                   = google_project.project.project_id
-  zone                      = "us-east4-c"
+  name                      = "instance-1"
+  machine_type              = "e2-medium"
+  project                   = local.project
+  zone                      = "us-east1-b"
   allow_stopping_for_update = true
 
   boot_disk {
     initialize_params {
-      image = "centos-7"
+      image = "ubuntu-minimal-2510-amd64"
     }
   }
 
   network_interface {
-    subnetwork = google_compute_subnetwork.subnet-us-east4.id
+    # Reference the 'self_link' from the specific subnet in the module output
+    subnetwork = module.vpc_network.subnets["us-east1/subnet-us-east1].self_link
 
     access_config {
       // Ephemeral IP
