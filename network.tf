@@ -4,7 +4,7 @@ module "vpc_network" {
 
   # insert the 3 required variables here
   network_name = var.network_name
-  project_id   = google_project.project.project_id
+  project_id   = local.project
   subnets = [
     {
       subnet_name           = "subnet-us-east1"
@@ -38,8 +38,8 @@ module "vpc_network" {
 
 resource "google_compute_firewall" "allow_ssh" {
   name    = "allow-ssh"
-  # network = module.vpc_network.network_name
-  network = "vpc"
+  project = local.project
+  network = module.vpc_network.network_name
 
   # Allow rule
   allow {
