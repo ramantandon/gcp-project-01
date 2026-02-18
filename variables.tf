@@ -22,12 +22,11 @@ variable "network_name" {
   default     = "vpc"
 }
 
-/* locals {
+/* 
+locals {
   # Admins
   gcp_admins = [
     "serviceAccount:terraform@rtandon-ak-myproject-2021-12.iam.gserviceaccount.com",
   ]
 }
- */
-
-
+*/
