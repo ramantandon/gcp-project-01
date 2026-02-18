@@ -38,7 +38,8 @@ module "vpc_network" {
 
 resource "google_compute_firewall" "allow_ssh" {
   name    = "allow-ssh"
-  network = module.vpc_network.network_name.self_link
+  # network = module.vpc_network.network_name
+  network = "vpc"
 
   # Allow rule
   allow {
