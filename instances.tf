@@ -13,7 +13,7 @@ resource "google_compute_instance" "default" {
 
   network_interface {
     # Reference the 'self_link' from the specific subnet in the module output
-    subnetwork = module.vpc_network.subnets["us-east1/subnet-us-east1].self_link
+    subnetwork = module.vpc_network.subnets["us-east1/subnet-us-east1"].self_link
 
     access_config {
       // Ephemeral IP
