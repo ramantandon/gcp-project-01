@@ -3,7 +3,7 @@ resource "google_compute_instance" "instance-1" {
   machine_type              = "e2-medium"
   project                   = local.project
   zone                      = "us-east1-b"
-  # tags                      = ["allow-ssh"]
+  tags                      = ["allow-ssh"]
   allow_stopping_for_update = true
 
   boot_disk {
