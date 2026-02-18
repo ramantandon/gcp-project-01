@@ -19,8 +19,6 @@ module "vpc_network" {
       subnet_private_access = "true"
     }
   ]
-
-  # Optional Inputs
   # auto_create_subnetworks = false    # default is false
   # routing_mode = "GLOBAL"            # default is GLOBAL
   /* 
@@ -50,6 +48,9 @@ resource "google_compute_firewall" "allow_ssh" {
   # Traffic direction (default is INGRESS)
   direction = "INGRESS"
   priority = 1000
+
+# Apply this rule to instances with following tag
+  target_tags = ["allow-ssh"]
 
   # Source range for the traffic (0.0.0.0/0 means all)
   source_ranges = ["0.0.0.0/0"]
