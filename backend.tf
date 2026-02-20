@@ -4,7 +4,7 @@ terraform {
     organization = "ramantandon"
 
     workspaces {
-      name = "gcp-project-03"
+      name = "gcp-project-01"
     }
   }
 }
